@@ -96,7 +96,8 @@ export default {
       const robot = this.selectedRobot;
       const cost = robot.head.cost + robot.leftArm.cost
         + robot.torso.cost + robot.rightArm.cost + robot.base.cost;
-      this.$store.commit('addRobotToCart', { ...robot, cost });
+      this.$store.dispatch('addRobotToCart', { ...robot, cost })
+        .then(() => this.$router.push('/cart'));
       this.addedToCart = true;
     },
   },
